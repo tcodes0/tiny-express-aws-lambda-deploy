@@ -1,0 +1,123 @@
+root: true
+extends:
+  # Uses the recommended rules from @typescript-eslint/eslint-plugin
+  - plugin:@typescript-eslint/recommended
+plugins:
+  - '@typescript-eslint'
+parser: '@typescript-eslint/parser'
+# see https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/experimental-utils/src/ts-eslint/ParserOptions.ts
+parserOptions:
+  tsconfigRootDir: .
+  # Allows for the parsing of modern ECMAScript features
+  ecmaVersion: 2020
+  # Allows for the use of imports
+  sourceType: module
+  extraFileExtensions:
+    - .cjs
+globals:
+  __DEV__: true
+ignorePatterns:
+  - packages/**/build/**/*
+  - node_modules/**/*
+  - coverage/**/*
+  - '*.spec*'
+rules:
+  ##############
+  # typescript #
+  ##############
+  '@typescript-eslint/ban-ts-comment':
+    - error
+    - ts-expect-error: allow-with-description
+      ts-ignore: allow-with-description
+      ts-nocheck: allow-with-description
+      ts-check: false
+      minimumDescriptionLength: 3
+  '@typescript-eslint/no-shadow':
+    - error
+    - builtinGlobals: false
+      hoist: all
+      allow: []
+      ignoreTypeValueShadow: true
+  #
+  # warn, code style
+  #
+  '@typescript-eslint/no-empty-interface': warn
+  '@typescript-eslint/ban-types': warn
+  #
+  # off, code style
+  #
+  '@typescript-eslint/member-delimiter-style': off
+  '@typescript-eslint/indent': off
+  '@typescript-eslint/ban-ts-ignore': off
+  '@typescript-eslint/explicit-function-return-type': off
+  '@typescript-eslint/explicit-member-accessibility': off
+  '@typescript-eslint/no-empty-function': off
+  # fine with code review
+  '@typescript-eslint/no-explicit-any':
+    - off
+    - ignoreRestArgs: true
+  '@typescript-eslint/explicit-module-boundary-types': off
+  # using ES2015 module syntax for modules
+  '@typescript-eslint/prefer-namespace-keyword': off
+  #
+  # off, conflicts with or replaced by prettier
+  #
+  '@typescript-eslint/no-extra-semi': off
+  # code works and there's enough use cases of this
+  '@typescript-eslint/no-use-before-define': off
+  ##########
+  # eslint #
+  ##########
+  # using custom logger to replace console.log
+  no-console:
+    - error
+    - allow:
+        - time
+        - timeEnd
+  #
+  # warn, code style
+  #
+  operator-linebreak: warn
+  object-curly-newline: warn
+  no-restricted-syntax: warn
+  new-cap: warn
+  no-else-return: warn
+  no-empty: warn
+  no-unused-expressions:
+    - warn
+    - allowShortCircuit: true
+      allowTernary: true
+  default-case: warn
+  #
+  # off, conflicts with or replaced by prettier
+  #
+  no-extra-semi: off
+  no-confusing-arrow: off
+  max-len: off
+  indent: off
+  arrow-parens: off
+  implicit-arrow-linebreak: off
+  no-underscore-dangle: off
+  arrow-body-style: off
+  padded-blocks: off
+  spaced-comment: off
+  #
+  # off, TS conflict
+  #
+  no-unused-vars: off
+  #
+  # off, code style
+  #
+  # rule meant to help with types, we use ts for it
+  consistent-return: off
+  # we use some requires inline
+  global-require: off
+  # nothing wrong with var
+  no-var: off
+  # again, nothing wrong with var
+  prefer-const: off
+  # nothing wrong with continue
+  no-continue: off
+  # see @typescript-eslint/no-use-before-define in this file
+  no-use-before-define: off
+  camelcase: off

@@ -6,6 +6,9 @@
   "scripts": {
     "watch": "tsc -w",
     "cdk": "cdk",
+    "deploy": "yarn cdk deploy CdkStack --require-approval=never -c mode=production",
+    "synth": "yarn build && yarn cdk synth",
+    "synthCheck": "yarn build && yarn cdk synth >/dev/null",
     "build": "rimraf build && webpack --progress --config webpack.prod.cjs"
   },
   "bin": {

@@ -12,7 +12,7 @@ export class CdkStack extends cdk.Stack {
     const fn = new lambda.Function(this, 'MyLambda', {
       runtime: lambda.Runtime.NODEJS_12_X,
       handler: 'build/lambda.handler',
-      code: lambda.Code.fromAsset(path.join(__dirname, '../../'), {
+      code: lambda.Code.fromAsset(path.join(__dirname, '../build/app.js'), {
         exclude: ['cdk'],
       }),
     })

@@ -3,5 +3,7 @@ export const server = express()
 
 // @ts-ignore asdf
 server.get('/', (req, res) => {
-  res.send('implement server here')
+  res.status(200).json({
+    result: 'hello',
+  })
 })

@@ -6,7 +6,7 @@ const prodConfig = {}
 
 prodConfig.mode = 'none'
 prodConfig.entry = {
-  app: './app/index.ts',
+  index: './app/index.ts',
 }
 prodConfig.plugins = []
 const config = merge(common, prodConfig)

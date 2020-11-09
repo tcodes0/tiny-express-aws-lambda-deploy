@@ -8,8 +8,6 @@ export const handler = (event, context, errorCallback) => {
   // https://mongoosejs.com/docs/lambda.html
   context.callbackWaitsForEmptyEventLoop = false
 
-  // eslint-disable-next-line no-console
-  console.log('Connecting to database...')
   try {
     return proxy(createServer(server), event, context)
   } catch (error) {

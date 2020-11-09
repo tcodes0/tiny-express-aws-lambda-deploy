@@ -50,8 +50,4 @@ export class CdkStack extends cdk.Stack {
 }
 
 const app = new cdk.App()
-new CdkStack(app, 'CdkStack', {
-  env: {
-    region: 'eu-central-1',
-  },
-})
+new CdkStack(app, 'CdkStack')

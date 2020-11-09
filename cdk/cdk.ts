@@ -11,7 +11,7 @@ export class CdkStack extends cdk.Stack {
     // lambda
     const fn = new lambda.Function(this, 'MyLambda', {
       runtime: lambda.Runtime.NODEJS_12_X,
-      handler: 'index.handler',
+      handler: 'index.index.handler',
       code: lambda.Code.fromAsset(path.join(__dirname, '../build'), {
         exclude: ['cdk'],
       }),

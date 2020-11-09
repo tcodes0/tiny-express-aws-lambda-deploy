@@ -15,6 +15,9 @@ export class CdkStack extends cdk.Stack {
       code: lambda.Code.fromAsset(path.join(__dirname, '../build'), {
         exclude: ['cdk'],
       }),
+      environment: {
+        mode: this.node.tryGetContext('MODE') || 'fallback'
+      }
     })
 
     // ApiGW

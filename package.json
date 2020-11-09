@@ -6,7 +6,7 @@
   "scripts": {
     "watch": "tsc -w",
     "cdk": "cdk",
-    "deploy": "yarn build && yarn cdk deploy CdkStack --require-approval=never -c mode=production --progress events --profile default",
+    "deploy": "yarn build && yarn cdk deploy CdkStack --require-approval=never -c MODE=production --progress events --profile default",
     "synth": "yarn build && yarn cdk synth",
     "synthCheck": "yarn build && yarn cdk synth >/dev/null",
     "build": "rimraf build && webpack --progress --config webpack.prod.cjs"
@@ -41,6 +41,7 @@
     "webpack-merge": "5.3.0"
   },
   "dependencies": {
-    "express": "4.17.1"
+    "express": "4.17.1",
+    "ts-node": "9.0.0"
   }
 }

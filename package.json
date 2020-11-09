@@ -9,7 +9,7 @@
     "deploy": "yarn build && yarn cdk deploy CdkStack --require-approval=never -c mode=production --progress events --profile default",
     "synth": "yarn build && yarn cdk synth",
     "synthCheck": "yarn build && yarn cdk synth >/dev/null",
-    "build": "rimraf build && webpack --progress --config webpack.prod.cjs"
+    "build": "rimraf build && sucrase ./app -d ./build --transforms imports"
   },
   "bin": {
     "cdk": "bin/cdk.js"
@@ -30,6 +30,7 @@
     "path": "0.12.7",
     "prettier": "2.1.2",
     "rimraf": "3.0.2",
+    "sucrase": "3.16.0",
     "terser-webpack-plugin": "5.0.3",
     "ts-loader": "8.0.10",
     "typescript": "4.0.5",

@@ -1,8 +1,6 @@
 import { createServer, proxy } from 'aws-serverless-express'
 import { server } from './server'
-import { connectDatabase } from './database'
 
-// @ts-ignore sdfsdfs
 export const handler = (event, context, errorCallback) => {
   // This will re-use `cachedMongoConn` between function calls.
   // See https://www.mongodb.com/blog/post/serverless-development-with-nodejs-aws-lambda-mongodb-atlas
@@ -12,11 +10,9 @@ export const handler = (event, context, errorCallback) => {
 
   // eslint-disable-next-line no-console
   console.log('Connecting to database...')
-  connectDatabase()
-    .then(() => proxy(createServer(server), event, context))
-    .catch(error => {
-      // eslint-disable-next-line no-console
-      console.error('Could not connect to database', { error })
-      errorCallback(error)
-    })
+  try {
+    return proxy(createServer(server), event, context)
+  } catch (error) {
+    errorCallback(error)
+  }
 }

@@ -9,7 +9,7 @@
     "deploy": "yarn build && yarn cdk deploy CdkStack --require-approval=never -c mode=production --progress events --profile default",
     "synth": "yarn build && yarn cdk synth",
     "synthCheck": "yarn build && yarn cdk synth >/dev/null",
-    "build": "rimraf build && sucrase ./app -d ./build --transforms imports"
+    "build": "rimraf build && webpack --progress --config webpack.prod.cjs"
   },
   "bin": {
     "cdk": "bin/cdk.js"
